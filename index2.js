@@ -38,5 +38,6 @@ let nesting = (str) => {
 console.log(f2('this.is.my.first.app="12"'));
 console.log(f2('user.name=Alex&user.name=Oleg'));
 console.log(f2('foo.bar27=194d5a7e083f4d3241bd23e2dc2a1e18&boo.foo="10"'));
-console.log(f2('foo.bar=hello=world&loo.id=rgg=ergeg'));
+console.log(f2('foo.bar=Hello=World'));
+console.log(f2('foo.bar="Hello=World"'));
 console.log(f2(''));

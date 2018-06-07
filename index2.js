@@ -1,10 +1,10 @@
 let f2 = (inputStr) => {
   let obj = {};
-  if (inputStr.indexOf('&') != 0 && inputStr.indexOf('.') != 0 && inputStr.indexOf('=') != 0) {
+  if (inputStr.indexOf('&') != 0 && inputStr.indexOf('.') != 0 && inputStr.indexOf('=') != 0 && inputStr != '') {
     inputStr = inputStr.replace(/\"|\"/g,'');
     inputStr.split('&').map((obj1) => {
       let index = obj1.indexOf('.');
-      if (obj1.split('=')[1] !='') {
+      if (obj1.split('=')[1] != '' && obj1.split('=').length < 3 ) {
         if (index != -1){
           obj[obj1.substring(0, index)] = nesting(obj1.substring(index + 1))
         } else {
@@ -14,9 +14,9 @@ let f2 = (inputStr) => {
         return obj1.split('=')[0] = '';
       }
     })
-    console.log(obj);
+    return obj;
   } else {
-    console.log('error');
+    console.log('Incorrect input...');
   }
 }
 
@@ -35,6 +35,8 @@ let nesting = (str) => {
   })
   return obj;
 }
-f2('this.is.my.first.app="12"');
-f2('user.name=Alex&user.name=Oleg')
-f2('foo.bar27=194d5a7e083f4d3241bd23e2dc2a1e18&boo.foo="10"');
+console.log(f2('this.is.my.first.app="12"'));
+console.log(f2('user.name=Alex&user.name=Oleg'));
+console.log(f2('foo.bar27=194d5a7e083f4d3241bd23e2dc2a1e18&boo.foo="10"'));
+console.log(f2('foo.bar=hello=world&loo.id=rgg=ergeg'));
+console.log(f2(''));
